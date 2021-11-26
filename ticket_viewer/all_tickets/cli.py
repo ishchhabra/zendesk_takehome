@@ -58,7 +58,7 @@ def prev(state):
         _print_options()
 
 
-def _get_tickets(state_obj: click.Context, tickets_url: str) -> Dict:
+def _get_tickets(state_obj, tickets_url: str) -> Dict:
     resp = get(tickets_url, auth=(f"{AGENT_EMAIL}/token", API_TOKEN))
     assert resp.status_code == 200, {
         "error": resp.status_code,
@@ -76,7 +76,8 @@ def _get_tickets(state_obj: click.Context, tickets_url: str) -> Dict:
 def _print_tickets(tickets: Dict):
     for ticket in tickets:
         print(
-            "Ticket with subject '{subject}' opened by {requester_id} on {created_at}".format(
+            "Ticket #{id} with subject '{subject}' opened by {requester_id} on {created_at}".format(
+                id=ticket["id"],
                 subject=ticket["subject"],
                 requester_id=ticket["requester_id"],
                 created_at=datetime.strptime(
