@@ -11,14 +11,14 @@ def cli():
     while True:
         ticket_number = click.prompt("Enter your ticket number", type=int)
 
-        print("")  # For formatting
+        print("")
 
         ticket = _get_ticket(ticket_number)
         _print_ticket(ticket)
 
         choice = click.confirm("Do you want to view another ticket?")
 
-        print("")  #  For formatting
+        print("")
 
         if choice is False:
             break

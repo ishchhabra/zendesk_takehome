@@ -26,7 +26,7 @@ def cli(state):
             type=click.Choice(list(cli.commands.keys()) + ["main"]),
         )
 
-        print("")  # For formatting
+        print("")
 
         if option == "main":
             break
@@ -35,9 +35,9 @@ def cli(state):
     pass
 
 
-@cli.command()
+@cli.command(name="next")
 @click.pass_obj
-def next(state):
+def next_page(state):
     if state["next_page_url"] is None:
         print("[ERROR] You are already on the last page.")
         print("")
@@ -47,9 +47,9 @@ def next(state):
         _print_options()
 
 
-@cli.command()
+@cli.command(name="prev")
 @click.pass_obj
-def prev(state):
+def prev_page(state):
     if state["previous_page_url"] is None:
         print("[ERROR] You are already on the first page.")
     else:
@@ -87,7 +87,7 @@ def _print_tickets(tickets: Dict):
             )
         )
 
-    print("")  # For proper formatting
+    print("")
 
 
 def _print_options():

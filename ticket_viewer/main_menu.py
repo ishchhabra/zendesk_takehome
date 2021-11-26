@@ -13,7 +13,7 @@ def cli():
             type=click.Choice(list(cli.commands.keys()) + ["exit"]),
         )
 
-        print("")  # For formatting
+        print("")
 
         if option == "exit":
             break
