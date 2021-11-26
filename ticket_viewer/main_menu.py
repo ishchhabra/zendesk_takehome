@@ -23,14 +23,16 @@ def cli():
 
 @cli.command(name="help")
 def help():
-    print("Welcome to the ticket viwer")
-    print("")
-    print("To view all tickets, type 'all_tickets'")
-    print("To view a ticket, type 'ticket'")
-    print("To view options, type 'help'")
-    print("To exit, type 'quit'")
+    print(
+        """
+Welcome to the ticket viewer
 
-    print("")
+To view all the tickets, type 'all_tickets'
+To view a ticket, type 'single_ticket'
+To view options, type 'help'
+To exit, type 'quit'
+    """
+    )
 
 
 @cli.command(name="all_tickets")

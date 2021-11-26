@@ -2,7 +2,7 @@
   {
     "request": {
       "method": "GET",
-      "url": "https://zccishchhabra.zendesk.com/api/v2/tickets_1"
+      "url": "https://zccishchhabra.zendesk.com/api/v2/tickets_1?per_page=25"
     },
     "response": {
       "status_code": 200,
@@ -32,7 +32,6 @@
             "due_at": null
           },
           {
-            "url": "https://zccishchhabra.zendesk.com/api/v2/tickets/2.json",
             "id": 2,
             "external_id": null,
             "via": { "channel": "api", "source": { "from": {}, "to": {}, "rel": null } },

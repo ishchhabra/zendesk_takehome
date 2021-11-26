@@ -52,6 +52,7 @@ def next_page(state):
 def prev_page(state):
     if state["previous_page_url"] is None:
         print("[ERROR] You are already on the first page.")
+        print("")
     else:
         tickets = _get_tickets(state, state["previous_page_url"])
         # breakpoint()
@@ -87,20 +88,21 @@ def _print_tickets(tickets: Dict):
             )
         )
 
-    print("")
-
 
 def _print_options():
-    print(f"To view the next page, type 'next")
-    print(f"To view the previous page, type 'prev'")
-    print(f"To return to the main menu, type 'main'")
-    print("")
+    print(
+        """
+To view the next page, type 'next'
+To view the previous page, type 'prev'
+To return to the main page, type 'main'
+    """
+    )
 
 
 def main():
     cli(
         obj={
-            "start_url": f"{ZENDESK_SUBDOMAIN}/api/v2/tickets",
+            "start_url": f"{ZENDESK_SUBDOMAIN}/api/v2/tickets?per_page=25",
             "next_page_url": None,
             "previous_page_url": None,
         },

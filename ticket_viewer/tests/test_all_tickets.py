@@ -10,7 +10,7 @@ def test_get_tickets(mock_responses):
 
     tickets = all_tickets._get_tickets(
         state_obj,
-        f"{ZENDESK_SUBDOMAIN}/api/v2/tickets_1",  # tickets_1 is a custom URL for testing, and not an actual endpoint.
+        f"{ZENDESK_SUBDOMAIN}/api/v2/tickets_1?per_page=25",  # tickets_1 is a custom URL for testing, and not an actual endpoint.
     )
 
     assert state_obj["previous_page_url"] is None
@@ -37,16 +37,18 @@ def test_print_tickets():
         )
 
 
-def test_prev(mock_responses):
+def test_prev_page(mock_responses):
     with io.StringIO() as buf, redirect_stdout(buf):
-        all_tickets.prev(obj={"previous_page_url": None}, standalone_mode=False)
+        all_tickets.prev_page(obj={"previous_page_url": None}, standalone_mode=False)
         assert buf.getvalue().strip() == "[ERROR] You are already on the first page."
 
         buf.truncate(0)
         buf.seek(0)
 
-        all_tickets.prev(
-            obj={"previous_page_url": f"{ZENDESK_SUBDOMAIN}/api/v2/tickets_1"},
+        all_tickets.prev_page(
+            obj={
+                "previous_page_url": f"{ZENDESK_SUBDOMAIN}/api/v2/tickets_1?per_page=25"
+            },
             standalone_mode=False,
         )
 
@@ -56,16 +58,16 @@ def test_prev(mock_responses):
         )
 
 
-def test_next(mock_responses):
+def test_next_page(mock_responses):
     with io.StringIO() as buf, redirect_stdout(buf):
-        all_tickets.next(obj={"next_page_url": None}, standalone_mode=False)
+        all_tickets.next_page(obj={"next_page_url": None}, standalone_mode=False)
         assert buf.getvalue().strip() == "[ERROR] You are already on the last page."
 
         buf.truncate()
         buf.seek(0)
 
-        all_tickets.next(
-            obj={"next_page_url": f"{ZENDESK_SUBDOMAIN}/api/v2/tickets_1"},
+        all_tickets.next_page(
+            obj={"next_page_url": f"{ZENDESK_SUBDOMAIN}/api/v2/tickets_1?per_page=25"},
             standalone_mode=False,
         )
 

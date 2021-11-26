@@ -10,7 +10,7 @@ def test_get_ticket(mock_responses):
     assert ticket["id"] == 1
 
     with pytest.raises(AssertionError):
-        single_ticket._get_ticket(2)
+        single_ticket._get_ticket(2)  # The fixture has status_code 404 for ticket ID 2.
 
 
 def test_pretty_print():
