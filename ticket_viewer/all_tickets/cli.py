@@ -51,9 +51,10 @@ def next(state):
 @click.pass_obj
 def prev(state):
     if state["previous_page_url"] is None:
-        print("You are already on the first page.")
+        print("[ERROR] You are already on the first page.")
     else:
         tickets = _get_tickets(state, state["previous_page_url"])
+        # breakpoint()
         _print_tickets(tickets)
         _print_options()
 
