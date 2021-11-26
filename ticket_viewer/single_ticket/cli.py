@@ -38,35 +38,35 @@ def _get_ticket(ticket_number: int):
 
 
 def _print_ticket(ticket: Dict[str, str]):
-    pretty_print(
+    _pretty_print(
         "ID",
         st_config.MAX_KEY_LENGTH,
         str(ticket["id"]),
         st_config.MAX_VALUE_LENGTH,
     )
 
-    pretty_print(
+    _pretty_print(
         "Subject",
         st_config.MAX_KEY_LENGTH,
         ticket["subject"],
         st_config.MAX_VALUE_LENGTH,
     )
 
-    pretty_print(
+    _pretty_print(
         "Requested",
         st_config.MAX_KEY_LENGTH,
         ticket["created_at"],
         st_config.MAX_VALUE_LENGTH,
     )
 
-    pretty_print(
+    _pretty_print(
         "Updated",
         st_config.MAX_KEY_LENGTH,
         ticket["updated_at"],
         st_config.MAX_VALUE_LENGTH,
     )
 
-    pretty_print(
+    _pretty_print(
         "Message",
         st_config.MAX_KEY_LENGTH,
         ticket["description"].replace(
@@ -76,7 +76,7 @@ def _print_ticket(ticket: Dict[str, str]):
     )
 
 
-def pretty_print(key: str, key_len: int, value: str, value_len: int):
+def _pretty_print(key: str, key_len: int, value: str, value_len: int):
     print(
         "{key:<{key_len}} : {value:{value_len}}".format(
             key=key[:key_len],

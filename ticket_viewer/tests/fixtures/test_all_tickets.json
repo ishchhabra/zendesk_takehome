@@ -5,6 +5,7 @@
       "url": "https://zccishchhabra.zendesk.com/api/v2/tickets_1"
     },
     "response": {
+      "status_code": 200,
       "body": {
         "tickets": [
           {

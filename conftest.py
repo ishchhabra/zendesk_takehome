@@ -27,4 +27,5 @@ def mock_responses(responses_mocker: responses.RequestsMock, fixtures: str):
             method=fixture["request"]["method"],
             url=fixture["request"]["url"],
             json=fixture["response"]["body"],
+            status=fixture["response"]["status_code"],
         )
