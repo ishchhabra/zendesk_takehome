@@ -5,6 +5,8 @@ import ticket_viewer.single_ticket.cli as single_ticket
 
 @click.group(invoke_without_command=True)
 def cli():
+    help(standalone_mode=False)
+
     while True:
         option = click.prompt(
             "Enter your input",
@@ -19,10 +21,16 @@ def cli():
             cli.commands[option](standalone_mode=False)
 
 
-# @click.pass_context
-# def help(ctx):
-#     print()
-#     breakpoint()
+@cli.command(name="help")
+def help():
+    print("Welcome to the ticket viwer")
+    print("")
+    print("To view all tickets, type 'all_tickets'")
+    print("To view a ticket, type 'ticket'")
+    print("To view options, type 'help'")
+    print("To exit, type 'quit'")
+
+    print("")
 
 
 @cli.command(name="all_tickets")
