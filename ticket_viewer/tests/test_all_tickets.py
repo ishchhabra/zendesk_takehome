@@ -54,7 +54,7 @@ def test_prev_page(mock_responses):
 
         assert (
             buf.getvalue().strip()
-            == "Ticket #1 with subject 'Sample ticket: Meet the ticket' opened by 422048676431 on 19 November, 2021 20:08:24\nTicket #2 with subject 'velit eiusmod reprehenderit officia cupidatat' opened by 422048674091 on 19 November, 2021 20:24:27\n\nTo view the next page, type 'next\nTo view the previous page, type 'prev'\nTo return to the main menu, type 'main'"
+            == "Ticket #1 with subject 'Sample ticket: Meet the ticket' opened by 422048676431 on 19 November, 2021 20:08:24\nTicket #2 with subject 'velit eiusmod reprehenderit officia cupidatat' opened by 422048674091 on 19 November, 2021 20:24:27\n\nTo view the next page, type 'next'\nTo view the previous page, type 'prev'\nTo return to the main menu, type 'main'"
         )
 
 
@@ -73,5 +73,5 @@ def test_next_page(mock_responses):
 
         assert (
             buf.getvalue().strip()
-            == "Ticket #1 with subject 'Sample ticket: Meet the ticket' opened by 422048676431 on 19 November, 2021 20:08:24\nTicket #2 with subject 'velit eiusmod reprehenderit officia cupidatat' opened by 422048674091 on 19 November, 2021 20:24:27\n\nTo view the next page, type 'next\nTo view the previous page, type 'prev'\nTo return to the main menu, type 'main'"
+            == "Ticket #1 with subject 'Sample ticket: Meet the ticket' opened by 422048676431 on 19 November, 2021 20:08:24\nTicket #2 with subject 'velit eiusmod reprehenderit officia cupidatat' opened by 422048674091 on 19 November, 2021 20:24:27\n\nTo view the next page, type 'next'\nTo view the previous page, type 'prev'\nTo return to the main menu, type 'main'"
         )

@@ -94,7 +94,7 @@ def _print_options():
         """
 To view the next page, type 'next'
 To view the previous page, type 'prev'
-To return to the main page, type 'main'
+To return to the main menu, type 'main'
     """
     )
 
