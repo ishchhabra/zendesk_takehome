@@ -3,7 +3,7 @@ from typing import Any, Dict
 
 import click
 from requests import get
-
+from ticket_viewer.all_tickets.constants import config as at_config
 from ticket_viewer.constants.config import (
     AGENT_EMAIL,
     API_TOKEN,
@@ -102,7 +102,7 @@ To return to the main menu, type 'main'
 def main():
     cli(
         obj={
-            "start_url": f"{ZENDESK_SUBDOMAIN}/api/v2/tickets?per_page=25",
+            "start_url": f"{ZENDESK_SUBDOMAIN}/api/v2/tickets?per_page={at_config.TICKETS_PER_PAGE}",
             "next_page_url": None,
             "previous_page_url": None,
         },
