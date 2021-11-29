@@ -6,9 +6,11 @@ The CLI requires `Python 3.8.10`.
 
 ## How to run
 
-1. Install dependencies using `pip install -r requirements.txt`
+1. Clone the repository using `git clone https://github.com/ishchhabra/zendesk_takehome`
 
-2. To run the CLI, use the following command:
+2. Install dependencies using `pip install -r requirements.txt`
+
+3. To run the CLI, use the following command:
 
    ```sh
    python -m ticket_viewer.main_menu
