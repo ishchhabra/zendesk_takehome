@@ -5,7 +5,7 @@ import ticket_viewer.single_ticket.cli as single_ticket
 
 @click.group(invoke_without_command=True)
 def cli():
-    help(standalone_mode=False)
+    print_help(standalone_mode=False)
 
     while True:
         option = click.prompt(
@@ -22,7 +22,7 @@ def cli():
 
 
 @cli.command(name="help")
-def help():
+def print_help():
     print(
         """
 Welcome to the ticket viewer
