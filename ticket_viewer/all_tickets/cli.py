@@ -11,6 +11,7 @@ from ticket_viewer.constants.config import (
     ZENDESK_DATETIME_FORMAT,
     ZENDESK_SUBDOMAIN,
 )
+import math
 
 
 @click.group(invoke_without_command=True)
@@ -18,6 +19,7 @@ from ticket_viewer.constants.config import (
 def cli(state):
     tickets = _get_tickets(state, state["start_url"])
     _print_tickets(tickets)
+    _print_current_page(state["current_page_number"], state["tickets_count"])
     _print_options()
 
     while True:
@@ -43,7 +45,9 @@ def next_page(state):
         print("")
     else:
         tickets = _get_tickets(state, state["next_page_url"])
+        state["current_page_number"] += 1
         _print_tickets(tickets)
+        _print_current_page(state["current_page_number"], state["tickets_count"])
         _print_options()
 
 
@@ -55,8 +59,9 @@ def prev_page(state):
         print("")
     else:
         tickets = _get_tickets(state, state["previous_page_url"])
-        # breakpoint()
+        state["current_page_number"] -= 1
         _print_tickets(tickets)
+        _print_current_page(state["current_page_number"], state["tickets_count"])
         _print_options()
 
 
@@ -71,6 +76,7 @@ def _get_tickets(state_obj, tickets_url: str) -> Dict:
 
     state_obj["next_page_url"] = resp["next_page"]
     state_obj["previous_page_url"] = resp["previous_page"]
+    state_obj["tickets_count"] = resp["count"]
 
     return resp["tickets"]
 
@@ -89,6 +95,17 @@ def _print_tickets(tickets: Dict):
         )
 
 
+def _print_current_page(current_page: int, total_tickets_count: int):
+    print(
+        """
+Page ({current_page}/{total_page})
+        """.format(
+            current_page=current_page,
+            total_page=math.ceil(total_tickets_count / at_config.TICKETS_PER_PAGE),
+        )
+    )
+
+
 def _print_options():
     print(
         """
@@ -105,6 +122,7 @@ def main():
             "start_url": f"{ZENDESK_SUBDOMAIN}/api/v2/tickets?per_page={at_config.TICKETS_PER_PAGE}",
             "next_page_url": None,
             "previous_page_url": None,
+            "current_page_number": 1,
         },
         standalone_mode=False,
     )
