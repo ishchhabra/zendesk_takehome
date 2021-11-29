@@ -1,3 +1,4 @@
+import math
 from datetime import datetime
 from typing import Any, Dict
 
@@ -11,7 +12,6 @@ from ticket_viewer.constants.config import (
     ZENDESK_DATETIME_FORMAT,
     ZENDESK_SUBDOMAIN,
 )
-import math
 
 
 @click.group(invoke_without_command=True)
