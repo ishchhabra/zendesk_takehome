@@ -65,7 +65,7 @@ def prev_page(state):
         _print_options()
 
 
-def _get_tickets(state_obj, tickets_url: str) -> Dict:
+def _get_tickets(state_obj, tickets_url: str) -> List[Dict]:
     resp = get(tickets_url, auth=(f"{AGENT_EMAIL}/token", API_TOKEN))
     assert resp.status_code == 200, {
         "error": resp.status_code,
