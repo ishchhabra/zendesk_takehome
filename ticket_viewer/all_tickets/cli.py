@@ -1,6 +1,6 @@
 import math
 from datetime import datetime
-from typing import Any, Dict
+from typing import List, Dict
 
 import click
 from requests import get
@@ -81,7 +81,7 @@ def _get_tickets(state_obj, tickets_url: str) -> Dict:
     return resp["tickets"]
 
 
-def _print_tickets(tickets: Dict):
+def _print_tickets(tickets: List[Dict]):
     for ticket in tickets:
         print(
             "Ticket #{id} with subject '{subject}' opened by {requester_id} on {created_at}".format(
